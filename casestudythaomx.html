@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HÃNG PHIM ABC</title>
+    <style>
+        
+/* 
+        .normal-wrapper {
+            width: 900px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            background: black;
+            overflow: auto;
+        } */
+        body{
+            background-color: black;
+        }
+        div {
+            margin: 10px;
+        }
+
+        img {
+            margin: 5px;
+            width: 200px;
+            height: 250px;
+        }
+        input{
+            width: 200px;
+            height:25px;
+            margin: 5px;
+        }
+        
+    </style>
+</head>
+
+<body><hr color="orange">
+    <h style="color: rgb(248, 47, 11);" >HÃNG PHIM ABC</h><br>
+    <hr color="orange">
+    <div>
+        <input  id="Home" onclick="home()" href="" type="button" value="Trang chủ" style="background-color: rgb(233, 90, 38);">
+        <input id="hanhdong" onclick="thayDoiTheLoai('hanhdong')" href="" type="button" value="Hành Động"
+            style="background-color: rgb(233, 90, 38);">
+        <input id="haihuoc" onclick="thayDoiTheLoai('haihuoc')" href="" type="button" value="Hài Hước"
+            style="background-color: rgb(233, 90, 38);">
+        <input id="tinhcam" onclick="thayDoiTheLoai('tinhcam')" href="" type="button" value="Tình Cảm"
+            style="background-color: rgb(233, 90, 38);">
+          
+    </div><br>
+    <hr>
+    <h id="tieu_de_phim" style="color: rgb(241, 237, 229);"> Phim Đang Trình Chiếu</h>
+    <hr color="orange">
+    <div class="hanhdong" > 
+    <img  src="Fantastic-Beasts.jpg"  width="100" height="150" onclick="clickLink('phongchieu.html')" >
+    <img src="matbiec.jpg" width="100" height="150" onclick= "clickLink('phongchieu.html')" >
+    <img src="hobbit.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+    <img src="peaky-blinders.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+
+    </div>
+    <hr color="orange">
+    <div class="haihuoc">
+        <img src="civilwar.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="dongmau.jpeg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="hai-phuong.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+        <img src="rogueone.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+    </div>
+    <hr color="orange">
+    <div class="tinhcam">
+        <img src="sherlockhome.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="Teoem.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="vuotnguc.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+        <img src="safe.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+    </div><hr color="orange">
+   
+    <h style="color: orangered;" >ABC</h><hr color="orange" >
+    <script>
+        class Phim {
+            constructor(img, name, category) {
+                this.img = img;
+                this.name = name;
+                this.category = category;
+            }
+        }
+        var danhsachphim = [new Phim('Fantastic-Beasts.jpg', 'phim fantastic', 'hanhdong','quocgia'),
+        new Phim('matbiec.jpg', 'phim matbiec', 'hanhdong'),
+        new Phim('hobbit.jpg', 'phim hobbit', 'hanhdong'),
+        new Phim('peaky-blinders.jpg', 'phim peaky', 'hanhdong'),
+        new Phim('civilwar.jpg', 'phim civilwar', 'haihuoc'),
+        new Phim('dongmau.jpeg', 'phim dongmau', 'haihuoc'),
+        new Phim('hai-phuong.jpg', 'phim hai phuong', 'haihuoc'),
+        new Phim('rogueone.jpg', 'phim rogueone', 'haihuoc'),
+        new Phim('thai1.jpg', 'phim civilwar', 'tinhcam'),
+        new Phim('thai2.jpg', 'phim dongmau', 'tinhcam'),
+        new Phim('thai3.jpg', 'phim hai phuong', 'tinhcam'),
+        new Phim('vuotnguc.jpg', 'phim rogueone', 'tinhcam'),
+
+
+        ]
+        var hienthiphim = "";
+        var hanhdong = document.getElementById('hanhdong').value;
+        // console.log(document.getElementById('hanhdong').value)
+        for (let element of danhsachphim) {
+            hienthiphim += ` <img  src="${element.img}" alt="${element.name}"  width="100" height="150" onclick="clickLink('phongchieu.html')" >`
+        }
+        function thayDoiTheLoai(category) {
+            var hienthiphim = "";
+            console.log(category)
+            for (let element of danhsachphim) {
+                if (element.category == category) {
+                    hienthiphim += ` <img  src="${element.img}" alt="${element.name}"  width="100" height="150" onclick="clickLink('phongchieu.html')" >`
+                }
+            }
+
+           var tieu_de_phim = [1,2,3];
+            var phim = ["hanhdong", "haihuoc", "tinhcam"];
+            for (let n = 0; n < phim.length; n++) {
+                if (phim[n] == category) {
+                    document.querySelector("." + phim[n]).innerHTML = hienthiphim
+                } else {
+                    document.querySelector("." + phim[n]).innerHTML = "";
+                    console.log(phim[n]);
+                }
+
+            }
+
+
+
+        }
+
+        // console.log(danhsachphim);
+
+
+
+
+        // document.getElementById('phimhaihuoc').innerHTML = hienthiphim;
+        // console.log(danhsachphim);
+        function clickLink(href) {
+            window.location.href = href;
+            // console.log(href)
+        }
+        function home(){
+           document.querySelector('.hanhdong').innerHTML= ` <img  src="Fantastic-Beasts.jpg"  width="100" height="150" onclick="clickLink('phongchieu.html')" >
+    <img src="matbiec.jpg" width="100" height="150" onclick= "clickLink('phongchieu.html')" >
+    <img src="hobbit.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+    <img src="peaky-blinders.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+`
+            document.querySelector('.haihuoc').innerHTML= `<img src="civilwar.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="dongmau.jpeg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="hai-phuong.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+        <img src="rogueone.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">`
+            document.querySelector('.tinhcam').innerHTML=`<img src="sherlockhome.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="Teoem.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">
+        <img src="vuotnguc.jpg" width="100" height="" onclick="clickLink('phongchieu.html')">
+        <img src="safe.jpg" width="100" height="150" onclick="clickLink('phongchieu.html')">`
+        }
+    </script>
+</body>
+
+</html>
